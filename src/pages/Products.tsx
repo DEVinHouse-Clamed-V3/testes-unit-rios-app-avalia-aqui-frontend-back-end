@@ -60,7 +60,8 @@ export default function Products({ navigation }: any) {
           onPress={() =>
             navigation.navigate("FormAva", {
               productId: item.id,
-              productName: item.name
+              productName: item.name,
+              productImage: item.url_image
             })
           }
         >
