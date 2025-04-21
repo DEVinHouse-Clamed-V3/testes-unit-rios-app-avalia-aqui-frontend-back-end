@@ -23,16 +23,19 @@ export default function Home({ navigation }: HomeProps) {
       <StatusBar style="auto" />
       <View style={styles.containerImgHome}>
         <Image
+          testID="home-img-1"
           style={styles.imageHome}
           source={require("../../assets/zum.jpg")}
         ></Image>
 
         <Image
+          testID="home-img-2"
           style={styles.imageHome}
           source={require("../../assets/pan.jpg")}
         ></Image>
 
         <Image
+          testID="home-img-3"
           style={styles.imageHome}
           source={require("../../assets/its.jpg")}
         ></Image>

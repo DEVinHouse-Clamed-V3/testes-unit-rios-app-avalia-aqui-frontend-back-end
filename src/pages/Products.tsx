@@ -74,7 +74,7 @@ export default function Products({ navigation }: any) {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#317bcf" />
+        <ActivityIndicator testID="ActivityIndicator" size="large" color="#317bcf" />
       </View>
     );
   }
