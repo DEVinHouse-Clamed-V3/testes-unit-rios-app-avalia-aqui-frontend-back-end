@@ -32,10 +32,10 @@ export default function Products({ navigation }: any) {
     const listProducts = async () => {
       setLoading(true);
 
-      const baseURL =  BASE_URL
+      const baseURL = BASE_URL
 
       axios
-        .get(baseURL + "/products")
+        .get(`${BASE_URL}/products`)
         .then((response) => {
           setLoading(false);
           setProducts(response.data);
@@ -60,7 +60,8 @@ export default function Products({ navigation }: any) {
           onPress={() =>
             navigation.navigate("FormAva", {
               productId: item.id,
-              productName: item.name
+              productName: item.name,
+              productImage: item.url_image
             })
           }
         >
@@ -73,7 +74,7 @@ export default function Products({ navigation }: any) {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#317bcf" />
+        <ActivityIndicator testID="ActivityIndicator" size="large" color="#317bcf" />
       </View>
     );
   }
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
     height: 180,
     resizeMode: "contain",
     marginBottom: 15,
-    alignSelf:'center',
+    alignSelf: 'center',
   },
   productInfo: {
     width: 200
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     color: "#666",
     marginTop: 10
   },
-  productBrand:{
+  productBrand: {
     fontSize: 14,
     color: "#666",
     marginBottom: 5,
