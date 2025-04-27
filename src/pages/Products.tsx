@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { BASE_URL } from '@env'
+import { BASE_URL } from "@env";
 
 interface Product {
   id: number;
@@ -24,7 +24,6 @@ interface Product {
 }
 
 export default function Products({ navigation }: any) {
-
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,10 +31,10 @@ export default function Products({ navigation }: any) {
     const listProducts = async () => {
       setLoading(true);
 
-      const baseURL = BASE_URL
+      const baseURL = BASE_URL;
 
       axios
-      .get(`${BASE_URL}/products`)
+        .get(`${BASE_URL}/products`)
         .then((response) => {
           setLoading(false);
           setProducts(response.data);
@@ -61,7 +60,7 @@ export default function Products({ navigation }: any) {
             navigation.navigate("FormAva", {
               productId: item.id,
               productName: item.name,
-              productImage: item.url_image
+              productImage: item.url_image,
             })
           }
         >
@@ -74,7 +73,11 @@ export default function Products({ navigation }: any) {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator testID="ActivityIndicator" size="large" color="#317bcf" />
+        <ActivityIndicator
+          testID="ActivityIndicator"
+          size="large"
+          color="#317bcf"
+        />
       </View>
     );
   }
@@ -106,25 +109,25 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     flexDirection: "row",
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     marginBottom: 20,
-    height: 230
+    height: 230,
   },
   productImage: {
     width: 150,
     height: 180,
     resizeMode: "contain",
     marginBottom: 15,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   productInfo: {
-    width: 200
+    width: 200,
   },
   productName: {
     fontWeight: "bold",
     fontSize: 16,
     color: "#666",
-    marginTop: 10
+    marginTop: 10,
   },
   productBrand: {
     fontSize: 14,
