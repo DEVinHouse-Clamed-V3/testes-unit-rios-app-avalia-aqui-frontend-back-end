@@ -6,7 +6,7 @@ import {
   Alert,
   TouchableOpacity,
   ScrollView,
-  Image
+  Image,
 } from "react-native";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -29,7 +29,7 @@ export default function FormAva(navigation: any) {
   const [email, setEmail] = useState("");
   const [experience, setExperience] = useState("");
   const [recommend, setRecommend] = useState(false);
-  const [feedback, setFeedback] = useState("");
+  const [feedback, setFeedback] = useState("ruim");
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState<Review[]>([]);
 
@@ -43,7 +43,7 @@ export default function FormAva(navigation: any) {
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/reviews`)
+      .get(`https://07f8-187-62-83-129.ngrok-free.app/reviews`)
       .then((res) => {
         const filtered = res.data.filter(
           (review: any) => review.product_id === productId
@@ -105,7 +105,6 @@ export default function FormAva(navigation: any) {
 
     const baseURL = BASE_URL;
 
-
     axios
       .post(`${BASE_URL}/reviews`, review)
       .then(() => {
@@ -116,7 +115,6 @@ export default function FormAva(navigation: any) {
         setFeedback("");
         setRecommend(false);
 
-        // Atualizar lista de reviews
         axios
           .get(`${BASE_URL}/reviews`)
           .then((res) => {
@@ -136,10 +134,7 @@ export default function FormAva(navigation: any) {
     <ScrollView style={styles.container}>
       <View style={styles.productHeader}>
         <Text style={styles.productName}>{productName}</Text>
-        <Image
-          source={{ uri: productImage }}
-          style={styles.productImage}
-        />
+        <Image source={{ uri: productImage }} style={styles.productImage} />
       </View>
 
       <View>
@@ -208,10 +203,7 @@ export default function FormAva(navigation: any) {
         </View>
       </View>
 
-      <TouchableOpacity
-        style={styles.buttonFeedback}
-        onPress={handleSubmit}
-      >
+      <TouchableOpacity style={styles.buttonFeedback} onPress={handleSubmit}>
         <Text style={styles.buttonFeedbackText}>Enviar Feedback</Text>
       </TouchableOpacity>
 

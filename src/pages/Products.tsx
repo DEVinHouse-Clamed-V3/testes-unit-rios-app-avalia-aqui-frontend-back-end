@@ -32,15 +32,18 @@ export default function Products({ navigation }: any) {
     const listProducts = async () => {
       setLoading(true);
 
+      console.log("BASE_URL", BASE_URL);
+
       const baseURL = BASE_URL
 
       axios
-        .get(`${BASE_URL}/products`)
+        .get(`https://07f8-187-62-83-129.ngrok-free.app/products`)
         .then((response) => {
           setLoading(false);
           setProducts(response.data);
         })
-        .catch(() => {
+        .catch((error) => {
+          console.log("Error", error.message);
           Alert.alert("Não foi possivel obter a lista de produtos");
         });
     };
